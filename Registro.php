@@ -21,7 +21,7 @@
       <div class="container">
 
         <nav class="navbar navbar-expand-lg">
-        <a class="navbar-brand" href="index.php"><img src="images/Logo_UNITEC.png" alt="Logo Terceto" class="img-fluid" width="10%"></a>
+        <a class="navbar-brand" href="index.php"><img src="images/Logo_UNITEC.png" alt="Logo CarWash" class="img-fluid" width="10%"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>

@@ -1,7 +1,7 @@
 <?php
 
   $hn = 'localhost';
-  $db = 'redsocial';
+  $db = 'carwash';
   $un = 'root';
   $pw = 'root';
 

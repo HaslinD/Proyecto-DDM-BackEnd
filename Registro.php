@@ -59,16 +59,16 @@
             <label for="nombre"><b>Nombre</b></label>
             <input type="text" placeholder="Ingrese nombre" name="nombre" value="<?php if (isset($_POST['enviar'])){ echo htmlentities($_POST['nombre']); } ?>" required>
 
-            <label for="Usuario"><b>Numero de Telefono</b></label>
+            <label for="numero"><b>Numero de Telefono</b></label>
             <input type="text" placeholder="Ingrese su numero Telefonico" name="numero" value="<?php if (isset($_POST['enviar'])){ echo htmlentities($_POST['numero']); } ?>" required>
 
-            <label for="Contraseña"><b>Fecha de Nacimiento</b></label>
-            <input type="date" placeholder="Ingrese Fecha de Nacimiento" name="fecha" value="<?php if (isset($_POST['enviar'])){ echo htmlentities($_POST['fechanac']); } ?>" required>
+            <label for="fecha"><b>Fecha de Nacimiento</b></label>
+            <input type="date" placeholder="Ingrese Fecha de Nacimiento" name="fechanac" value="<?php if (isset($_POST['enviar'])){ echo htmlentities($_POST['fechanac']); } ?>" required>
 
-            <label for="Email"><b>Correo electrónico</b></label>
+            <label for="correo"><b>Correo electrónico</b></label>
             <input type="text" placeholder="Ingrese su Correo" name="correo" value="<?php if (isset($_POST['enviar'])){ echo htmlentities($_POST['correo']); } ?>" required>
 
-            <label for="Contraseña"><b>Contraseña</b></label>
+            <label for="contra"><b>Contraseña</b></label>
             <input type="password" placeholder="Ingrese Contraseña" name="contra" value="<?php if (isset($_POST['enviar'])){ echo htmlentities($_POST['contra']); } ?>" required>
 
             <button type="submit" name="enviar" value="submit" class="btn">REGISTRARSE</button>
@@ -89,10 +89,11 @@
                   $Correo = get_post($conn, 'correo');
                   $Contraseña = get_post($conn, 'contra');
 
+
                   //Recuperacion del correo y numero de cuenta en base al correo y numero de cuenta (Estan separados por fallas)
                   $query = "SELECT num_telefono, correo FROM usuarios WHERE correo = '$Correo' ";
                   $result = $conn->query($query);
-                  $query2 = "SELECT num_telefono, correo FROM usuarios WHERE num_cuenta = '$NumTelefono'";
+                  $query2 = "SELECT num_telefono, correo FROM usuarios WHERE num_telefono = '$NumTelefono'";
                   $result2 = $conn->query($query2);
 
                   if (!$result) die("Fatal Error");
@@ -102,10 +103,10 @@
                   $row2 = $result2->fetch_array(MYSQLI_ASSOC);
 
                   //Validacion que el numero de cuenta y el correo no existan en la base de datos
-                  if ($NumCuenta != $row2['num_telefono'] && $Correo != $row['correo']) {
+                  if ($NumTelefono != $row2['num_telefono'] && $Correo != $row['correo']) {
                     //Insercion a la tabla de usuarios con los campos ingresados
                     $query = "INSERT INTO usuarios (nombre, num_telefono, fechanacimiento, correo, contrasenia)
-                              VALUES" . "('$Nombre','$NumTelefono','$Fechadenaci','$Correo','$Contraseña')";
+                              VALUES" . "('$Nombre','$NumTelefono','$FechadeNaci','$Correo','$Contraseña')";
 
                     $result = $conn->query($query);
                     if (!$result) echo "INSERT no se ha realizado<br><br>";
